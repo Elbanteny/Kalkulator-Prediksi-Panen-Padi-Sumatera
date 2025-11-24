@@ -39,7 +39,7 @@ PROVINSI = [
     'Sumatera Utara'
 ]
 
-PROVINSI_SUMATERA = ["Aceh"] + PROVINSI + ["Kepulauan Bangka Belitung", "Kepulauan Riau"]
+PROVINSI_SUMATERA = ["Aceh"] + PROVINSI
 PROVINSI_SUMATERA.sort()
 
 class InputData(BaseModel):
