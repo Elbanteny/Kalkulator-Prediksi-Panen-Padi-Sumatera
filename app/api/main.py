@@ -19,6 +19,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000", # Alamat frontend Next.js Anda
+    "https://kalkulator-prediksi-panen-padi-suma.vercel.app/",
+    "https://vercel.com/mamiryanpgmailcoms-projects/kalkulator-prediksi-panen-padi-sumatera/7Boo7NdQFrUoBqXvU1tLoxBjeS4S"
 ]
 
 app.add_middleware(
