@@ -9,7 +9,7 @@ export default function PredictionForm() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <div className="w-full max-w-2xl rounded-lg border border-gray-200/50 bg-white/90 p-8 shadow-2xl backdrop-blur-sm">
+    <div className="w-full max-w-2xl rounded-2xl border border-gray-200/50 bg-white/60 p-8 shadow-xl backdrop-blur-lg transition-all duration-300 ease-in-out">
       <h1 className="mb-2 text-center text-3xl font-bold text-gray-800">
         Kalkulator Prediksi Panen Padi
       </h1>

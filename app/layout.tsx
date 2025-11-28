@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Kalkulator Prediksi Panen Padi Sumatera",
   description:
-    "Memprediksi hasil panen padi di Sumatera berdasarkan data input. Gunakan model Random Forrest untuk akurasi terbaik.",
+    "Memprediksi hasil panen padi di Sumatera berdasarkan data input. Menggunakan model Random Forrest untuk akurasi terbaik.",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
