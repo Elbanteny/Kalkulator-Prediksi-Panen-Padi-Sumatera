@@ -53,7 +53,7 @@ const FormSection = ({
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
-        const response = await fetch("/api/provinces");
+        const response = await fetch("http://127.0.0.1:8000/provinces");
         if (!response.ok) {
           throw new Error("Gagal mengambil daftar provinsi");
         }
@@ -81,7 +81,7 @@ const FormSection = ({
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/predict", {
+      const response = await fetch("http://127.0.0.1:8000/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
