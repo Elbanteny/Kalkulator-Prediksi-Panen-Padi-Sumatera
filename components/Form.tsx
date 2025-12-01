@@ -37,6 +37,8 @@ const FormSection = ({
   isLoading,
 }: FormSectionProps) => {
   const [provinces, setProvinces] = useState<string[]>([]);
+  const baseurl =
+    "https://CybranArmy-model-penghitung-panen-padi-sumatra.hf.space";
 
   const form = useForm<PredictionFormValues>({
     resolver: zodResolver(PredictionSchema) as Resolver<PredictionFormValues>,
@@ -53,7 +55,7 @@ const FormSection = ({
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/provinces");
+        const response = await fetch(`${baseurl}/provinces`);
         if (!response.ok) {
           throw new Error("Gagal mengambil daftar provinsi");
         }
@@ -81,7 +83,7 @@ const FormSection = ({
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/predict", {
+      const response = await fetch(`${baseurl}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
