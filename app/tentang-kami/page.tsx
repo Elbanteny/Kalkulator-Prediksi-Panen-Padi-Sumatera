@@ -6,7 +6,7 @@ const TentangKamiPage = () => {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="flex flex-col items-center text-center gap-8">
           {/* Konten Teks */}
-          <div className="max-w-3xl">
+          <div className="max-w-6xl">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               Tentang Kami
             </h1>

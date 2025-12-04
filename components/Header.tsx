@@ -21,7 +21,7 @@ const Header = () => {
           <Link href="/" className="flex items-center focus:outline-none">
             <Image
               alt="logo"
-              src="/images/Logo.png"
+              src="/images/logo2.png"
               width={120}
               height={40}
               className="h-auto w-auto transition-transform duration-300 ease-in-out hover:scale-105"
