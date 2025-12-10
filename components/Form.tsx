@@ -55,10 +55,10 @@ const FormSection = ({
     defaultValues: {
       tahun: new Date().getFullYear(),
       nama_provinsi: "",
-      luas_panen: undefined,
-      curah_hujan: undefined,
-      suhu_rata2: undefined,
-      kelembapan: undefined,
+      luas_panen: "" as any,
+      curah_hujan: "" as any,
+      suhu_rata2: "" as any,
+      kelembapan: "" as any,
     },
   });
 

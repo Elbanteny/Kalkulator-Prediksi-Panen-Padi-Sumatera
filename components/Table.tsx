@@ -137,7 +137,6 @@ const TablePredicition: React.FC<TablePredicitionProps> = ({
             {data.length > 0 ? (
               data.map((item, index) => (
                 <TableRow key={item.id}>
-                  {" "}
                   <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell>{formatTimestamp(item.timestamp)}</TableCell>
                   <TableCell>{item.nama_provinsi}</TableCell>
