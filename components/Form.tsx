@@ -19,6 +19,16 @@ import { useState, useEffect } from "react";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PredictionSchema } from "@/schema/zod";
+import { toast } from "sonner";
+import { db } from "@/firestore/firestore.config";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import z from "zod";
 
 type PredictionFormValues = z.infer<typeof PredictionSchema>;
@@ -97,6 +107,40 @@ const FormSection = ({
 
       const result = await response.json();
       setPrediction(result.prediksi_panen);
+      const historyCollection = collection(db, "predictionHistory");
+      const q = query(
+        historyCollection,
+        where("nama_provinsi", "==", values.nama_provinsi),
+        where("tahun", "==", values.tahun),
+        where("luas_panen", "==", values.luas_panen),
+        where("curah_hujan", "==", values.curah_hujan),
+        where("suhu_rata2", "==", values.suhu_rata2),
+        where("kelembapan", "==", values.kelembapan)
+      );
+
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        toast.info("Informasi", {
+          description: "Prediksi dengan data ini sudah ada di riwayat.",
+        });
+      } else {
+        const historyItem = {
+          ...values,
+          prediksi_panen: result.prediksi_panen,
+          timestamp: serverTimestamp(),
+        };
+
+        await addDoc(historyCollection, historyItem);
+
+        toast.success("Berhasil Disimpan", {
+          description: "Riwayat prediksi telah ditambahkan.",
+          action: {
+            label: "Lihat Riwayat",
+            onClick: () => (window.location.href = "/histori"),
+          },
+        });
+      }
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message || "Terjadi kesalahan saat melakukan prediksi.");
